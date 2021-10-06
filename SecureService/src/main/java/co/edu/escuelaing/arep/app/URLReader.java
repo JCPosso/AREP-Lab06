@@ -77,18 +77,9 @@ public class URLReader {
      */
     public String readURL(String sitetoread) {
         try {
-            // Crea el objeto que representa una URL2
             URL siteURL = new URL(sitetoread);
             try {
-                // Crea el objeto que URLConnection
                 URLConnection urlConnection = siteURL.openConnection();
-                // Obtiene los campos del encabezado y los almacena en un estructura Map
-                //Map<String, List<String>> headers = urlConnection.getHeaderFields();
-                // Obtiene una vista del mapa como conjunto de pares <K,V>
-                // para poder navegarlo
-                //Set<Map.Entry<String, List<String>>> entrySet = headers.entrySet();
-                // Recorre la lista de campos e imprime los valores
-
                 BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
                 String inputLine = null;
