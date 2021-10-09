@@ -36,7 +36,7 @@ Es importante que al momento en que se pida el nombre del certificado informar q
 
 2. generamos el certificado con el siguiente comando:
 ```
-keytool -genkeypair -alias ecikeypair -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore ecikeystore.p12 -validity 3650
+keytool -export -keystore ./ecikeystore.p12 -alias ecikeypair -file ecicert.cer
 ```
 3. Generamos el almacenamiento de llaves seguro
 ```
