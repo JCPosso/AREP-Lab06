@@ -1,0 +1,7 @@
+co/edu/escuelaing/arep/app/Persistence/userPersistence.class
+co/edu/escuelaing/arep/app/Persistence/UserPersistenceException.class
+co/edu/escuelaing/arep/app/Persistence/userImpl.class
+co/edu/escuelaing/arep/app/URLReader.class
+co/edu/escuelaing/arep/app/SecureService.class
+co/edu/escuelaing/arep/app/Model/User.class
+co/edu/escuelaing/arep/app/SecureLogin.class

@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>InfoService</module>
+    <module>SecureService</module>
   </modules>
 
   <name>AREP-Lab06</name>
