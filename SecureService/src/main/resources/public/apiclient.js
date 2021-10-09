@@ -1,5 +1,17 @@
+ var url="https://"+(window.location.href).split("/")[2];
 var apiclient = (function () {
     return{
+     otherService: function() {
+            $.ajax({
+                url: url+'/info',
+                type: 'GET',
+                success: function(data){
+                                document.getElementById("info").innerHTML =data;
+                                console.log(data)
+                                },
+                contentType: 'application/json'
+            });
+        },
      getFormData: function ($form){
                 var unindexed_array = $form.serializeArray();
                 var indexed_array = {};

@@ -25,11 +25,11 @@ import java.util.logging.Logger;
  */
 public class URLReader {
 
-    public static void main(String[] args) {
+    public static void main() {
         try {
             // Create a file and a password representation
-            File trustStoreFile = new File("keystores/myTrustStore");
-            char[] trustStorePassword = "567890".toCharArray();
+            File trustStoreFile = new File("SecureService/keystores/myTrustStore");
+            char[] trustStorePassword = "123456".toCharArray();
 
             // Load the trust store, the default type is "pkcs12", the alternative is "jks"
             KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -44,14 +44,14 @@ public class URLReader {
 
             //Print the trustManagers returned by the TMF
             //only for debugging
-            for (TrustManager t : tmf.getTrustManagers()) {
+            for(TrustManager t: tmf.getTrustManagers()){
                 System.out.println(t);
             }
-
             //Set the default global SSLContext so all the connections will use it
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, tmf.getTrustManagers(), null);
             SSLContext.setDefault(sslContext);
+
 
 
         } catch (KeyStoreException ex) {
@@ -70,33 +70,21 @@ public class URLReader {
 
     }
 
-    /**
-     * Crea un objeto que representa la URL2 y genera un objeto de conexión URL
-     *
-     * @param sitetoread url entregada por el navegador
-     */
-    public String readURL(String sitetoread) {
+    public static String readURL(String sitetoread) {
         try {
             URL siteURL = new URL(sitetoread);
-            try {
-                URLConnection urlConnection = siteURL.openConnection();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-
-                String inputLine = null;
-                String consulta = "";
-                while ((inputLine = reader.readLine()) != null) {
-                    consulta += inputLine;
-                    if (!reader.ready()) {
-                        break;
-                    }
-                }
-                reader.close();
-                return consulta;
-            } catch (IOException x) {
-                return "fail";
+            URLConnection urlConnection = siteURL.openConnection();
+            System.out.println("-------message-body------");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"utf-8"));
+            StringBuilder response = new StringBuilder();
+            String inputLine = null;
+            while ((inputLine = reader.readLine()) != null) {
+                response.append(inputLine.trim());
             }
-        } catch (MalformedURLException e) {
-            return "fail";
+            return response.toString();
+        } catch (IOException x) {
+            System.err.println(x);
         }
+        return "";
     }
 }

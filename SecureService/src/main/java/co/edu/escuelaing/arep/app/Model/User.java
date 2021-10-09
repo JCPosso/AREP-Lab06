@@ -38,5 +38,17 @@ public class User {
     public void setHash(String hash) {
         this.hash = hash;
     }
+    public void createHash( ) {
+        this.hash = Hashing.sha256().hashString(this.name+this.password ,StandardCharsets.UTF_8).toString();;
+    }
 
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", hash='" + hash + '\'' +
+                '}';
+    }
 }

@@ -9,12 +9,13 @@ public class InfoService {
     public static void main(String[] args) {
         port(getPort());
         secure("InfoService/keystores/ecikeystore.p12","123456","InfoService/keystores/myTrustStore","123456");
-        get("info", (req, res) -> getInfo(req,res));
+
+        get("/consumir", (req, res) -> getInfo(req,res));
 
     }
     private static String getInfo(Request req, Response res) {
-        res.type("application/json");
-        return req.body();
+        System.out.println("hereeee");
+        return "mensaje de prueba";
     }
     /**
      * Metodo encargado de ejecutar el programa de manera local con un puerto predeterminado.
