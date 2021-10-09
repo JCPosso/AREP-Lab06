@@ -95,7 +95,7 @@ https://localhost:5000
 
 Nos informará que vamos a acceder a un sitio no seguro :
 
-![](/img/localhost-sitionoseguro.PNG)
+![](/img/localhost-sitionoseguro.png)
 
 Por lo cual damos en > avanzado >continuar con sitio no seguro y tenemos la primera vista de la aplicación.
 
@@ -131,3 +131,22 @@ como el que sigue a continuación.
 
 ### Despliegue AWS
 
+
+
+
+## Documentación
+
+Documentación en [docs](docs).
+
+### Javadoc
+Para generar javadoc ejecute los siguientes comandos.
+
+*        mvn javadoc:javadoc
+*        mvn javadoc:jar
+
+## Autor
+[Juan Camilo Posso Guevara](https://github.com/JCPosso)
+## Derechos de Autor
+**©** _Juan Camilo Posso G., Escuela Colombiana de Ingeniería Julio Garavito._
+## Licencia
+Licencia bajo  [GNU General Public License](https://github.com/JCPosso/AREP-Lab06/blob/master/LICENSE).
