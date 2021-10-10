@@ -16,11 +16,41 @@ El protocolo TLS (Transport Layer Security, seguridad de la capa de transporte) 
 ### HTTPS
 HTTPS (Hyper Text Transfer Protocol Secure o protocolo seguro de transferencia de hipertexto) aparece en la dirección URL cuando un sitio web está protegido por un certificado SSL. Los detalles del certificado, por ejemplo la entidad emisora y el nombre corporativo del propietario del sitio web, se pueden ver haciendo clic en el símbolo de candado de la barra del navegador.
 
+### Diseño
+Tenemos a dos servicios que se comunican entre ellos a través de un protocolo seguro https por el puerto 5001, los cuales están cada uno contenidos en una aplicación java construida con spark.
+El Secure Service es Accedido desde el navegador quien contiene el login desde https por el puerto 5000
+
+A continuacion se presenta el esquema usado para la comunicacion entre cliente y servidor:
+![](/img/diseno_cliente_servidor.png)
+
+### Arquitectura
+#### SecureService
+
+SecureService inicia el servidor fijando rutas adecuadas para el funcionamiento del api
+estas rutas se aseguran con las llaves ssh
+
+SecureLogin es quien controla el inicio  y salida de las sesiones asi como también se encarga de comunicarse con otros servicios, en este caso InfoService.
+
+UrlReader es genera las peticiones entre los servidores sólamente si cuentan con un certificado que cuenten con un almacenamiento seguro TrustStore (myTrustStore).A su vez usa TSL para generar contexto entre certificados.
+
+User es el objeto quien almacena las caracteristicas del usuario así como también el valor ssh asignado para cada uno
+
+La capa de persistencia se creó para hacer el sistema **Extensible** y se puedan crear y manejar mas usuarios en el aplicativo para usos futuros.
+
+![](/img/secureservice.png)
+
+#### InfoService
+InfoService genera un mensaje Lorem Ipsum , cuenta con su par de llaves y certificado.
+
+![](/img/infoservice.png)
+
+
 ## Instalación
 Para realizar la instalación de nuestro programa debemos ir a la linea de comandos de nuestro sistema operativo y ejecutar el siguiente comando
 ````
 git clone https://github.com/JCPosso/AREP-Lab06.git
 ````
+
 ## Despliegue
 
 ### Localhost
@@ -130,6 +160,10 @@ como el que sigue a continuación.
 ![](/img/localhost-info.png)
 
 ### Despliegue AWS
+
+A continuación, videolink con explicación del paso a paso de como desplegar el proyecto
+en una instancia de EC2 en AWS asi como también la creación de sus respectivos certificados y par de llaves.
+
 [![Despliegue AWS](https://img.youtube.com/vi/8wOURFaasls/0.jpg)](https://youtu.be/8wOURFaasls)
 
 
