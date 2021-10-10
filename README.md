@@ -33,7 +33,7 @@ keytool -genkeypair -alias ecikeypair -keyalg RSA -keysize 2048-storetype PKCS12
 ```
 Es importante que al momento en que se pida el nombre del certificado informar que será 'localhost'  que es donde ira  a correr el servicio:
 ![](/img/localhostkeystore.png)
-
+,
 2. generamos el certificado con el siguiente comando:
 ```
 keytool -export -keystore ./ecikeystore.p12 -alias ecikeypair -file ecicert.cer
