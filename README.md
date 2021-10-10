@@ -130,7 +130,7 @@ como el que sigue a continuación.
 ![](/img/localhost-info.png)
 
 ### Despliegue AWS
-![](/video.mkv)
+[![Despliegue AWS](https://img.youtube.com/vi/8wOURFaasls/0.jpg)](https://youtu.be/8wOURFaasls)
 
 
 
